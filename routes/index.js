@@ -39,7 +39,7 @@ router.post('/update', function(req, res, next) {
                 console.log("Updated Docs : ", docs);
             }
         });
-        res.send({numCalls: numReports})
+        res.send({serviceCalled: "/newNews"})
     });
     /*
     const test = req.body.service
@@ -59,54 +59,6 @@ router.post('/update', function(req, res, next) {
     res.send({test});
     }
     */
-});
-
-
-
-//PRIMERI ZA SWAGGERJA
-router.get('/', (req, res) => {
-    res.send([
-        {
-            id: 1,
-            title: 'Novice',
-            newsId: '2'
-        }
-    ])
-});
-router.get('/title', (req, res) => {
-    res.send([
-        {
-            id: 1,
-            title: 'Novice',
-            newsId: '2'
-        },
-        {
-            id: 2,
-            title: 'Novice 2',
-            newsId: '3'
-        },
-
-    ])
-});
-router.get('/titleDate', (req, res) => {
-    res.send([
-        {
-            date: '15.12.2022',
-            id: 2,
-            title: 'Novice 2',
-            newsId: '3'
-        },
-        {
-            date: '1.1.2022',
-            id: 1,
-            title: 'Novice',
-            newsId: '2'
-        }
-    ])
-});
-
-router.post('/', (req, res) =>{
-    res.status(201).send();
 });
 
 

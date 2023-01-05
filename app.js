@@ -33,9 +33,9 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs))
 //prvo damo operacijo, potem kateri url naslov je, definiramo metodo
 /**
  * @swagger
- * /new:
+ * /lastEndpoint:
  *  get:
- *      description: Get all new news
+ *      description: Get last Endpoint called
  *      responses: 
  *          200:
  *              description: Success
@@ -43,82 +43,40 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs))
  */
 /**
  * @swagger
- * /new:
+ * /mostPopularService:
+ *  get:
+ *      description: Get the most popular service
+ *      responses: 
+ *          200:
+ *              description: Success
+ *      
+ */
+/**
+ * @swagger
+ * /numCalls:
+ *  get:
+ *      description: Get the number of calls for a service
+ *      responses: 
+ *          200:
+ *              description: Success
+ *      
+ */
+/**
+ * @swagger
+ * /update:
  *  post:
- *      description: Post new news
+ *      description: Update number of calls for a service in database
  *      parameters:
- *      - name: title
- *        description: Title of news
+ *      - name: test
+ *        description: test for numbers of calls
  *        in: formData
  *        required: true
  *        type: string
  *      responses: 
  *          201:
- *              description: Created
+ *              description: Updated
  *      
  */
-/**
- * @swagger
- * /new/delete:
- *  get:
- *      description: Get news for deletion
- *      responses: 
- *          200:
- *              description: Ready for delitinon
- *      
- */
-/**
- * @swagger
- * /new/title:
- *  get:
- *      description: Get news for deletion
- *      responses: 
- *          200:
- *              description: Ready for delitinon
- *      
- */
-/**
- * @swagger
- * /new/delete/deleted:
- *  delete:
- *      description: Get news for deletion
- *      responses: 
- *          200:
- *              description: News deleted
- *      
- */
-/**
- * @swagger
- * /new/update:
- *  put:
- *      description: Get news for update
- *      responses: 
- *          200:
- *              description: News Updated
- *      
- */
-/**
- * @swagger
- * /new/delete/deletedMultiple:
- *  delete:
- *      description: Delete Multiple news
- *      responses: 
- *          200:
- *              description: Chosen news deleted
- *      
- */
-/**
- * @swagger
- * /new/titleDate:
- *  get:
- *      description: Get titles by specific dates
- *      responses: 
- *          200:
- *              description: Title by date selected
- *      
- */
-
-
 
 const PORT = process.env.PORT || 4000
 
