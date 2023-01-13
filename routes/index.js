@@ -4,25 +4,31 @@ const router = express.Router();
 const conn = require('../initDB')
 const mongoose = require('mongoose');
 const reports = require('../models/reportsNumber.model');
+const popular = require('../models/reportsMostPopular.model');
 const fetch = require('node-fetch');
 const util = require('util');
 
 router.get('/lastEndpoint', function(req, res, next) {
     reports.findOne({ service: 'Nove Novicke' }, function (err, data) {
         const report = data.lastEndpoint
-        res.send({lastEndpoint: report})
+        const numCalls = data.numCalls
+        res.send({lastEndpoint: report, numCalls: numCalls})
     });
 });
 router.get('/mostPopularService', function(req, res, next) {
-    reports.findOne({ service: 'Nove Novicke' }, function (err, data) {
-        const report = data.mostPopularService
-        res.send({mostPopularService: report})
+    popular.findOne({ service: 'Nove Novicke' }, function (err, data) {
+        console.log(data)
+        const report = data.service
+        const numCalls = data.numCalls
+        res.send({mostPopularService: report, numCalls: numCalls})
     });
 });
 router.get('/numCalls', function(req, res, next) {
     reports.findOne({ service: 'Nove Novicke' }, function (err, data) {
         const numReports = data.numCalls
-        res.send({numCalls: numReports})
+        const lastEndpoint = data.lastEndpoint
+        const service = data.service
+        res.send({service: service, lastEndpoint: lastEndpoint, numCalls: numReports})
     });
     //res.send({test});
 });
@@ -31,7 +37,7 @@ router.post('/update', function(req, res, next) {
         var numReports = data.numCalls
         numReports += 1;
         reports.updateOne({service: "Nove Novicke"}, 
-            {service: "Nove Novicke", lastEndpoint: "novicke-nove-novicke-api", mostPopularService: "Nove Novicke", numCalls: numReports}, function (err, docs) {
+            {service: "Nove Novicke", lastEndpoint: "/new", mostPopularService: "Nove Novicke", numCalls: numReports}, function (err, docs) {
             if (err){
                 console.log(err)
             }
